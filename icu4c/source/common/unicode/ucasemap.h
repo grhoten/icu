@@ -158,7 +158,7 @@ ucasemap_setOptions(UCaseMap *csm, uint32_t options, UErrorCode *pErrorCode);
  * @stable ICU 3.8
  */
 U_CAPI const UBreakIterator * U_EXPORT2
-ucasemap_getBreakIterator(const UCaseMap *csm);
+ucasemap_getBreakIterator(const UCaseMap *csm) U_LIFETIME_CAPTURE_BY(csm);
 
 /**
  * Set the break iterator that is used for titlecasing.
@@ -181,7 +181,7 @@ ucasemap_getBreakIterator(const UCaseMap *csm);
  * @stable ICU 3.8
  */
 U_CAPI void U_EXPORT2
-ucasemap_setBreakIterator(UCaseMap *csm, UBreakIterator *iterToAdopt, UErrorCode *pErrorCode);
+ucasemap_setBreakIterator(UCaseMap *csm, UBreakIterator *iterToAdopt U_LIFETIME_CAPTURE_BY(csm), UErrorCode *pErrorCode);
 
 /**
  * Titlecase a UTF-16 string. This function is almost a duplicate of u_strToTitle(),

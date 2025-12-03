@@ -189,7 +189,7 @@ public:
      * @return         the era strings.
      * @stable ICU 2.0
      */
-    U_I18N_API const UnicodeString* getEras(int32_t& count) const;
+    U_I18N_API const UnicodeString* getEras(int32_t& count) const U_LIFETIME_BOUND;
 
     /**
      * Sets abbreviated era strings. For example: "AD" and "BC".
@@ -206,7 +206,7 @@ public:
      * @return         the era name strings.
      * @stable ICU 3.4
      */
-    U_I18N_API const UnicodeString* getEraNames(int32_t& count) const;
+    U_I18N_API const UnicodeString* getEraNames(int32_t& count) const U_LIFETIME_BOUND;
 
     /**
      * Sets era name strings. For example: "Anno Domini" and "Before Christ".
@@ -223,7 +223,7 @@ public:
      * @return         the narrow era strings.
      * @stable ICU 4.2
      */
-    U_I18N_API const UnicodeString* getNarrowEras(int32_t& count) const;
+    U_I18N_API const UnicodeString* getNarrowEras(int32_t& count) const U_LIFETIME_BOUND;
 
     /**
      * Sets narrow era strings. For example: "A" and "B".
@@ -239,7 +239,7 @@ public:
      * @return the month strings. (DateFormatSymbols retains ownership.)
      * @stable ICU 2.0
      */
-    U_I18N_API const UnicodeString* getMonths(int32_t& count) const;
+    U_I18N_API const UnicodeString* getMonths(int32_t& count) const U_LIFETIME_BOUND;
 
     /**
      * Sets month strings. For example: "January", "February", etc.
@@ -257,7 +257,7 @@ public:
      * @return the short month strings. (DateFormatSymbols retains ownership.)
      * @stable ICU 2.0
      */
-    U_I18N_API const UnicodeString* getShortMonths(int32_t& count) const;
+    U_I18N_API const UnicodeString* getShortMonths(int32_t& count) const U_LIFETIME_BOUND;
 
     /**
      * Sets short month strings. For example: "Jan", "Feb", etc.
@@ -315,7 +315,7 @@ public:
      */
     U_I18N_API const UnicodeString* getMonths(int32_t& count,
                                               DtContextType context,
-                                              DtWidthType width) const;
+                                              DtWidthType width) const U_LIFETIME_BOUND;
 
     /**
      * Sets month strings by width and context. For example: "January", "February", etc.
@@ -337,7 +337,7 @@ public:
      * @return the weekday strings. (DateFormatSymbols retains ownership.)
      * @stable ICU 2.0
      */
-    U_I18N_API const UnicodeString* getWeekdays(int32_t& count) const;
+    U_I18N_API const UnicodeString* getWeekdays(int32_t& count) const U_LIFETIME_BOUND;
 
     /**
      * Sets wide weekday strings. For example: "Sunday", "Monday", etc.
@@ -354,7 +354,7 @@ public:
      * @return             the abbreviated weekday strings. (DateFormatSymbols retains ownership.)
      * @stable ICU 2.0
      */
-    U_I18N_API const UnicodeString* getShortWeekdays(int32_t& count) const;
+    U_I18N_API const UnicodeString* getShortWeekdays(int32_t& count) const U_LIFETIME_BOUND;
 
     /**
      * Sets abbreviated weekday strings. For example: "Sun", "Mon", etc. (Note: The method name is
@@ -375,7 +375,7 @@ public:
      */
     U_I18N_API const UnicodeString* getWeekdays(int32_t& count,
                                                 DtContextType context,
-                                                DtWidthType width) const;
+                                                DtWidthType width) const U_LIFETIME_BOUND;
 
     /**
      * Sets weekday strings by width and context. For example: "Sunday", "Monday", etc.
@@ -400,7 +400,7 @@ public:
      */
     U_I18N_API const UnicodeString* getQuarters(int32_t& count,
                                                 DtContextType context,
-                                                DtWidthType width) const;
+                                                DtWidthType width) const U_LIFETIME_BOUND;
 
     /**
      * Sets quarter strings by width and context. For example: "1st Quarter", "2nd Quarter", etc.
@@ -422,7 +422,7 @@ public:
      * @return         The AM/PM strings. (DateFormatSymbols retains ownership.)
      * @stable ICU 2.0
      */
-    U_I18N_API const UnicodeString* getAmPmStrings(int32_t& count) const;
+    U_I18N_API const UnicodeString* getAmPmStrings(int32_t& count) const U_LIFETIME_BOUND;
 
     /**
      * Sets ampm strings. For example: "AM" and "PM".
@@ -443,7 +443,7 @@ public:
      */
     U_I18N_API const UnicodeString* getAmPmStrings(int32_t& count,
                                                    DtContextType context,
-                                                   DtWidthType width) const;
+                                                   DtWidthType width) const U_LIFETIME_BOUND;
 
     /**
      * Sets AM/PM strings with the specified width. For example: "A" and "P".
@@ -501,7 +501,7 @@ public:
      */
     U_I18N_API const UnicodeString* getYearNames(int32_t& count,
                                                  DtContextType context,
-                                                 DtWidthType width) const;
+                                                 DtWidthType width) const U_LIFETIME_BOUND;
 
     /**
      * Sets cyclic year name strings by width and context. For example: "jia-zi", "yi-chou", etc.
@@ -529,7 +529,7 @@ public:
      */
     U_I18N_API const UnicodeString* getZodiacNames(int32_t& count,
                                                    DtContextType context,
-                                                   DtWidthType width) const;
+                                                   DtWidthType width) const U_LIFETIME_BOUND;
 
     /**
      * Sets calendar zodiac name strings by width and context. For example: "Rat", "Ox", "Tiger", etc.
@@ -578,7 +578,7 @@ public:
      *                     May be nullptr if there are no leap month patterns for this calendar.
      * @internal
      */
-    U_I18N_API const UnicodeString* getLeapMonthPatterns(int32_t& count) const;
+    U_I18N_API const UnicodeString* getLeapMonthPatterns(int32_t& count) const U_LIFETIME_BOUND;
 
 #endif  /* U_HIDE_INTERNAL_API */
 
@@ -590,7 +590,7 @@ public:
      * @return              The timezone strings as a 2-d array. (DateFormatSymbols retains ownership.)
      * @deprecated ICU 3.6
      */
-    U_I18N_API const UnicodeString** getZoneStrings(int32_t& rowCount, int32_t& columnCount) const;
+    U_I18N_API const UnicodeString** getZoneStrings(int32_t& rowCount, int32_t& columnCount) const U_LIFETIME_BOUND;
 #endif  /* U_HIDE_DEPRECATED_API */
 
     /**

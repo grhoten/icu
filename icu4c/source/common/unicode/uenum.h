@@ -172,7 +172,7 @@ uenum_reset(UEnumeration* en, UErrorCode* status);
  * @stable ICU 4.2
  */
 U_CAPI UEnumeration* U_EXPORT2
-uenum_openFromStringEnumeration(icu::StringEnumeration* adopted, UErrorCode* ec);
+uenum_openFromStringEnumeration(icu::StringEnumeration* adopted U_LIFETIME_BOUND, UErrorCode* ec);
 
 #endif
 

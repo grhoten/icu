@@ -620,7 +620,7 @@ public:
      * @param zoneToAdopt the TimeZone to be adopted.
      * @stable ICU 4.8
      */
-    U_I18N_API virtual void adoptTimeZone(TimeZone* zoneToAdopt);
+    U_I18N_API virtual void adoptTimeZone(TimeZone* zoneToAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Sets the time zone for the calendar used by this DateIntervalFormat object.

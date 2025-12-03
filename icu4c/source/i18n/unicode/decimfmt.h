@@ -731,7 +731,7 @@ class U_I18N_API DecimalFormat : public NumberFormat {
      *                          pattern is invalid this will be set to a failure code.
      * @stable ICU 2.0
      */
-    DecimalFormat(const UnicodeString& pattern, DecimalFormatSymbols* symbolsToAdopt, UErrorCode& status);
+    DecimalFormat(const UnicodeString& pattern, DecimalFormatSymbols* symbolsToAdopt U_LIFETIME_CAPTURE_BY(this), UErrorCode& status);
 
 #ifndef U_HIDE_INTERNAL_API
 
@@ -747,7 +747,7 @@ class U_I18N_API DecimalFormat : public NumberFormat {
      *                          pattern is invalid this will be set to a failure code.
      * @internal
      */
-    DecimalFormat(const UnicodeString& pattern, DecimalFormatSymbols* symbolsToAdopt,
+    DecimalFormat(const UnicodeString& pattern, DecimalFormatSymbols* symbolsToAdopt U_LIFETIME_CAPTURE_BY(this),
                   UNumberFormatStyle style, UErrorCode& status);
 
 #if UCONFIG_HAVE_PARSEALLINPUT
@@ -767,7 +767,7 @@ class U_I18N_API DecimalFormat : public NumberFormat {
      * Internal constructor for DecimalFormat; sets up internal fields. All public constructors should
      * call this constructor.
      */
-    DecimalFormat(const DecimalFormatSymbols* symbolsToAdopt, UErrorCode& status);
+    DecimalFormat(const DecimalFormatSymbols* symbolsToAdopt U_LIFETIME_CAPTURE_BY(this), UErrorCode& status);
 
   public:
 
@@ -843,7 +843,7 @@ class U_I18N_API DecimalFormat : public NumberFormat {
      *                          pattern is invalid this will be set to a failure code.
      * @stable ICU 2.0
      */
-    DecimalFormat(const UnicodeString& pattern, DecimalFormatSymbols* symbolsToAdopt,
+    DecimalFormat(const UnicodeString& pattern, DecimalFormatSymbols* symbolsToAdopt U_LIFETIME_CAPTURE_BY(this),
                   UParseError& parseError, UErrorCode& status);
 
     /**
@@ -1169,7 +1169,7 @@ class U_I18N_API DecimalFormat : public NumberFormat {
      * @param symbolsToAdopt DecimalFormatSymbols to be adopted.
      * @stable ICU 2.0
      */
-    virtual void adoptDecimalFormatSymbols(DecimalFormatSymbols* symbolsToAdopt);
+    virtual void adoptDecimalFormatSymbols(DecimalFormatSymbols* symbolsToAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Sets the decimal format symbols, which is generally not changed
@@ -1194,7 +1194,7 @@ class U_I18N_API DecimalFormat : public NumberFormat {
      * @param toAdopt CurrencyPluralInfo to be adopted.
      * @stable ICU 4.2
      */
-    virtual void adoptCurrencyPluralInfo(CurrencyPluralInfo* toAdopt);
+    virtual void adoptCurrencyPluralInfo(CurrencyPluralInfo* toAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Sets the currency plural format information,

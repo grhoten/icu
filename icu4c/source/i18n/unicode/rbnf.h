@@ -1100,7 +1100,7 @@ public:
      * @param symbolsToAdopt DecimalFormatSymbols to be adopted.
      * @stable ICU 49
      */
-    U_I18N_API virtual void adoptDecimalFormatSymbols(DecimalFormatSymbols* symbolsToAdopt);
+    U_I18N_API virtual void adoptDecimalFormatSymbols(DecimalFormatSymbols* symbolsToAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Sets the decimal format symbols, which is generally not changed

@@ -528,7 +528,7 @@ public:
      * @param filterSet UnicodeSet which determines the characters to be normalized
      * @stable ICU 4.4
      */
-    FilteredNormalizer2(const Normalizer2 &n2, const UnicodeSet &filterSet) :
+    FilteredNormalizer2(const Normalizer2 &n2 U_LIFETIME_CAPTURE_BY(this), const UnicodeSet &filterSet U_LIFETIME_CAPTURE_BY(this)) :
             norm2(n2), set(filterSet) {}
 
     /**

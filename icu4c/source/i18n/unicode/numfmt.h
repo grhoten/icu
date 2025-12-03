@@ -874,7 +874,7 @@ public:
      * @return a registry key that can be used to unregister this factory
      * @stable ICU 2.6
      */
-    static URegistryKey U_EXPORT2 registerFactory(NumberFormatFactory* toAdopt, UErrorCode& status);
+    static URegistryKey U_EXPORT2 registerFactory(NumberFormatFactory* toAdopt U_LIFETIME_CAPTURE_BY(global), UErrorCode& status);
 
     /**
      * Unregister a previously-registered NumberFormatFactory using the key returned from the

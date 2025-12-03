@@ -1263,7 +1263,7 @@ udat_setLenient(    UDateFormat*    fmt,
 * @stable ICU 2.0
 */
 U_CAPI const UCalendar* U_EXPORT2
-udat_getCalendar(const UDateFormat* fmt);
+udat_getCalendar(const UDateFormat* fmt) U_LIFETIME_CAPTURE_BY(fmt);
 
 /**
 * Set the UCalendar associated with an UDateFormat.
@@ -1288,7 +1288,7 @@ udat_setCalendar(            UDateFormat*    fmt,
 * @stable ICU 2.0
 */
 U_CAPI const UNumberFormat* U_EXPORT2
-udat_getNumberFormat(const UDateFormat* fmt);
+udat_getNumberFormat(const UDateFormat* fmt) U_LIFETIME_CAPTURE_BY(fmt);
 
 /**
 * Get the UNumberFormat for specific field associated with an UDateFormat.
@@ -1300,7 +1300,7 @@ udat_getNumberFormat(const UDateFormat* fmt);
 * @stable ICU 54
 */
 U_CAPI const UNumberFormat* U_EXPORT2
-udat_getNumberFormatForField(const UDateFormat* fmt, UChar field);
+udat_getNumberFormatForField(const UDateFormat* fmt, UChar field) U_LIFETIME_CAPTURE_BY(fmt);
 
 /**
 * Set the UNumberFormat for specific field associated with an UDateFormat.
@@ -1320,7 +1320,7 @@ udat_getNumberFormatForField(const UDateFormat* fmt, UChar field);
 U_CAPI void U_EXPORT2
 udat_adoptNumberFormatForFields(  UDateFormat* fmt,
                             const UChar* fields,
-                                  UNumberFormat*  numberFormatToSet,
+                                  UNumberFormat*  numberFormatToSet U_LIFETIME_CAPTURE_BY(fmt),
                                   UErrorCode* status);
 /**
 * Set the UNumberFormat associated with an UDateFormat.
@@ -1348,7 +1348,7 @@ udat_setNumberFormat(            UDateFormat*    fmt,
 */
 U_CAPI void U_EXPORT2
 udat_adoptNumberFormat(            UDateFormat*    fmt,
-                                   UNumberFormat*  numberFormatToAdopt);
+                                   UNumberFormat*  numberFormatToAdopt U_LIFETIME_CAPTURE_BY(fmt));
 /**
 * Get a locale for which date/time formatting patterns are available.
 * A UDateFormat in a locale returned by this function will perform the correct
@@ -1641,7 +1641,7 @@ udat_setSymbols(    UDateFormat             *format,
 U_CAPI const char* U_EXPORT2
 udat_getLocaleByType(const UDateFormat *fmt,
                      ULocDataLocaleType type,
-                     UErrorCode* status);
+                     UErrorCode* status) U_LIFETIME_CAPTURE_BY(fmt);
 
 /**
  * Set a particular UDisplayContext value in the formatter, such as

@@ -403,7 +403,7 @@ public:
     private:
         friend class Edits;
 
-        Iterator(const uint16_t *a, int32_t len, UBool oc, UBool crs);
+        Iterator(const uint16_t *a U_LIFETIME_CAPTURE_BY(this), int32_t len, UBool oc, UBool crs);
 
         int32_t readLength(int32_t head);
         void updateNextIndexes();

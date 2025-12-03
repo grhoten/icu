@@ -1252,7 +1252,7 @@ public:
      * @see #unregister
      * @stable ICU 2.0
      */
-    static void U_EXPORT2 registerInstance(Transliterator* adoptedObj);
+    static void U_EXPORT2 registerInstance(Transliterator* adoptedObj U_LIFETIME_CAPTURE_BY(global));
 
     /**
      * Registers an ID string as an alias of another ID string.

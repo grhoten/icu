@@ -143,7 +143,7 @@ public:
      */
     virtual char16_t *getAppendBuffer(int32_t minCapacity,
                                    int32_t desiredCapacityHint,
-                                   char16_t *scratch, int32_t scratchCapacity,
+                                   char16_t *scratch U_LIFETIME_BOUND, int32_t scratchCapacity,
                                    int32_t *resultCapacity);
 };
 
@@ -160,7 +160,7 @@ public:
      * @param s The UnicodeString to which this Appendable will write.
      * @stable ICU 4.8
      */
-    explicit UnicodeStringAppendable(UnicodeString &s) : str(s) {}
+    explicit UnicodeStringAppendable(UnicodeString &s U_LIFETIME_CAPTURE_BY(this)) : str(s) {}
 
     /**
      * Destructor.
@@ -225,7 +225,7 @@ public:
      */
     virtual char16_t *getAppendBuffer(int32_t minCapacity,
                                    int32_t desiredCapacityHint,
-                                   char16_t *scratch, int32_t scratchCapacity,
+                                   char16_t *scratch U_LIFETIME_BOUND, int32_t scratchCapacity,
                                    int32_t *resultCapacity) override;
 
 private:

@@ -543,7 +543,7 @@ U_CAPI void U_EXPORT2 usearch_setBreakIterator(UStringSearch  *strsrch,
 * @stable ICU 2.4
 */
 U_CAPI const UBreakIterator * U_EXPORT2 usearch_getBreakIterator(
-                                              const UStringSearch *strsrch);
+                                              const UStringSearch *strsrch) U_LIFETIME_CAPTURE_BY(strsrch);
     
 #endif
 
@@ -577,8 +577,8 @@ U_CAPI void U_EXPORT2 usearch_setText(      UStringSearch *strsrch,
 * @see #usearch_setText
 * @stable ICU 2.4
 */
-U_CAPI const UChar * U_EXPORT2 usearch_getText(const UStringSearch *strsrch, 
-                                               int32_t       *length);
+U_CAPI const UChar * U_EXPORT2 usearch_getText(const UStringSearch *strsrch,
+                                               int32_t       *length) U_LIFETIME_CAPTURE_BY(strsrch);
 
 /**
 * Gets the collator used for the language rules. 
@@ -591,7 +591,7 @@ U_CAPI const UChar * U_EXPORT2 usearch_getText(const UStringSearch *strsrch,
 * @stable ICU 2.4
 */
 U_CAPI UCollator * U_EXPORT2 usearch_getCollator(
-                                               const UStringSearch *strsrch);
+                                               const UStringSearch *strsrch) U_LIFETIME_CAPTURE_BY(strsrch);
 
 /**
 * Sets the collator used for the language rules. User retains the ownership 
@@ -637,8 +637,8 @@ U_CAPI void U_EXPORT2 usearch_setPattern(      UStringSearch *strsrch,
 * @stable ICU 2.4
 */
 U_CAPI const UChar * U_EXPORT2 usearch_getPattern(
-                                               const UStringSearch *strsrch, 
-                                                     int32_t       *length);
+                                               const UStringSearch *strsrch,
+                                                     int32_t       *length) U_LIFETIME_CAPTURE_BY(strsrch);
 
 /* methods ------------------------------------------------------------- */
 

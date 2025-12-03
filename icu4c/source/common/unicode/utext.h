@@ -205,7 +205,7 @@ utext_close(UText *ut);
  * @stable ICU 3.4
  */
 U_CAPI UText * U_EXPORT2
-utext_openUTF8(UText *ut, const char *s, int64_t length, UErrorCode *status);
+utext_openUTF8(UText *ut, const char *s U_LIFETIME_BOUND, int64_t length, UErrorCode *status);
 
 
 /**
@@ -223,7 +223,7 @@ utext_openUTF8(UText *ut, const char *s, int64_t length, UErrorCode *status);
  * @stable ICU 3.4
  */
 U_CAPI UText * U_EXPORT2
-utext_openUChars(UText *ut, const UChar *s, int64_t length, UErrorCode *status);
+utext_openUChars(UText *ut, const UChar *s U_LIFETIME_BOUND, int64_t length, UErrorCode *status);
 
 
 #if U_SHOW_CPLUSPLUS_API
@@ -240,7 +240,7 @@ utext_openUChars(UText *ut, const UChar *s, int64_t length, UErrorCode *status);
  * @stable ICU 3.4
  */
 U_CAPI UText * U_EXPORT2
-utext_openUnicodeString(UText *ut, icu::UnicodeString *s, UErrorCode *status);
+utext_openUnicodeString(UText *ut, icu::UnicodeString *s U_LIFETIME_BOUND, UErrorCode *status);
 
 
 /**
@@ -256,7 +256,7 @@ utext_openUnicodeString(UText *ut, icu::UnicodeString *s, UErrorCode *status);
  * @stable ICU 3.4
  */
 U_CAPI UText * U_EXPORT2
-utext_openConstUnicodeString(UText *ut, const icu::UnicodeString *s, UErrorCode *status);
+utext_openConstUnicodeString(UText *ut, const icu::UnicodeString *s U_LIFETIME_BOUND, UErrorCode *status);
 
 
 /**
@@ -272,7 +272,7 @@ utext_openConstUnicodeString(UText *ut, const icu::UnicodeString *s, UErrorCode 
  * @stable ICU 3.4
  */
 U_CAPI UText * U_EXPORT2
-utext_openReplaceable(UText *ut, icu::Replaceable *rep, UErrorCode *status);
+utext_openReplaceable(UText *ut, icu::Replaceable *rep U_LIFETIME_BOUND, UErrorCode *status);
 
 /**
  * Open a  UText implementation over an ICU CharacterIterator.
@@ -287,7 +287,7 @@ utext_openReplaceable(UText *ut, icu::Replaceable *rep, UErrorCode *status);
  * @stable ICU 3.4
  */
 U_CAPI UText * U_EXPORT2
-utext_openCharacterIterator(UText *ut, icu::CharacterIterator *ci, UErrorCode *status);
+utext_openCharacterIterator(UText *ut, icu::CharacterIterator *ci U_LIFETIME_BOUND, UErrorCode *status);
 
 #endif
 

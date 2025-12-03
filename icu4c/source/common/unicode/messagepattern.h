@@ -623,7 +623,7 @@ public:
      * @return the i-th pattern "part".
      * @stable ICU 4.8
      */
-    const Part &getPart(int32_t i) const {
+    const Part &getPart(int32_t i) const U_LIFETIME_BOUND {
         return parts[i];
     }
 

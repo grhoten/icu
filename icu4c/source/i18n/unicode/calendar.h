@@ -319,7 +319,7 @@ public:
      * @return             A Calendar if created successfully. nullptr otherwise.
      * @stable ICU 2.0
      */
-    U_I18N_API static Calendar* U_EXPORT2 createInstance(TimeZone* zoneToAdopt, UErrorCode& success);
+    U_I18N_API static Calendar* U_EXPORT2 createInstance(TimeZone* zoneToAdopt U_LIFETIME_BOUND, UErrorCode& success);
 
     /**
      * Creates a Calendar using the given timezone and the default locale.  The TimeZone
@@ -359,7 +359,7 @@ public:
      * @return             A Calendar if created successfully. nullptr otherwise.
      * @stable ICU 2.0
      */
-    U_I18N_API static Calendar* U_EXPORT2 createInstance(TimeZone* zoneToAdopt,
+    U_I18N_API static Calendar* U_EXPORT2 createInstance(TimeZone* zoneToAdopt U_LIFETIME_BOUND,
                                                          const Locale& aLocale,
                                                          UErrorCode& success);
 
@@ -838,7 +838,7 @@ public:
      * @param value  The given time zone.
      * @stable ICU 2.0
      */
-    U_I18N_API void adoptTimeZone(TimeZone* value);
+    U_I18N_API void adoptTimeZone(TimeZone* value U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Sets the calendar's time zone to be the same as the one passed in. The TimeZone
@@ -857,7 +857,7 @@ public:
      * @return   The time zone object associated with this calendar.
      * @stable ICU 2.0
      */
-    U_I18N_API const TimeZone& getTimeZone() const;
+    U_I18N_API const TimeZone& getTimeZone() const U_LIFETIME_BOUND;
 
     /**
      * Returns the time zone owned by this calendar. The caller owns the returned object
@@ -1455,7 +1455,7 @@ protected:
      *                 U_ZERO_ERROR if constructed successfully.
      * @stable ICU 2.0
      */
-    U_I18N_API Calendar(TimeZone* zone, const Locale& aLocale, UErrorCode& success);
+    U_I18N_API Calendar(TimeZone* zone U_LIFETIME_CAPTURE_BY(this), const Locale& aLocale, UErrorCode& success);
 
     /**
      * Constructs a Calendar with the given time zone and locale.
@@ -2400,7 +2400,7 @@ private:
      * @return a registry key that can be used to unregister this factory
      * @internal
      */
-    U_I18N_API static URegistryKey registerFactory(ICUServiceFactory* toAdopt, UErrorCode& status);
+    U_I18N_API static URegistryKey registerFactory(ICUServiceFactory* toAdopt U_LIFETIME_CAPTURE_BY(global), UErrorCode& status);
 
     /**
      * Unregister a previously-registered CalendarFactory using the key returned from the

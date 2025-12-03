@@ -277,7 +277,7 @@ U_NAMESPACE_END
  */
 U_CAPI const UChar * U_EXPORT2
 utrans_getUnicodeID(const UTransliterator *trans,
-                    int32_t *resultLength);
+                    int32_t *resultLength) U_LIFETIME_CAPTURE_BY(trans);
 
 /**
  * Register an open transliterator with the system.  When
@@ -294,7 +294,7 @@ utrans_getUnicodeID(const UTransliterator *trans,
  * @stable ICU 2.0
  */
 U_CAPI void U_EXPORT2 
-utrans_register(UTransliterator* adoptedTrans,
+utrans_register(UTransliterator* adoptedTrans U_LIFETIME_CAPTURE_BY(global),
                 UErrorCode* status);
 
 /**

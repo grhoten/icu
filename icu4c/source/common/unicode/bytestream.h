@@ -149,7 +149,7 @@ public:
    */
   virtual char* GetAppendBuffer(int32_t min_capacity,
                                 int32_t desired_capacity_hint,
-                                char* scratch, int32_t scratch_capacity,
+                                char* scratch U_LIFETIME_BOUND, int32_t scratch_capacity,
                                 int32_t* result_capacity);
 
   /**
@@ -187,7 +187,7 @@ public:
    * @param capacity size of the buffer
    * @stable ICU 4.2
    */
-  CheckedArrayByteSink(char* outbuf, int32_t capacity);
+  CheckedArrayByteSink(char* outbuf U_LIFETIME_CAPTURE_BY(this), int32_t capacity);
   /**
    * Destructor.
    * @stable ICU 4.2
@@ -225,7 +225,7 @@ public:
    */
   virtual char* GetAppendBuffer(int32_t min_capacity,
                                 int32_t desired_capacity_hint,
-                                char* scratch, int32_t scratch_capacity,
+                                char* scratch U_LIFETIME_BOUND, int32_t scratch_capacity,
                                 int32_t* result_capacity) override;
   /**
    * Returns the number of bytes actually written to the sink.
@@ -296,7 +296,7 @@ class StringByteSink : public ByteSink {
    * @param dest pointer to string object to append to
    * @stable ICU 4.2
    */
-  StringByteSink(StringClass* dest) : dest_(dest) { }
+  StringByteSink(StringClass* dest U_LIFETIME_CAPTURE_BY(this)) : dest_(dest) { }
   /**
    * Constructs a ByteSink that reserves append capacity and will append bytes to the dest string.
    * 
@@ -304,7 +304,7 @@ class StringByteSink : public ByteSink {
    * @param initialAppendCapacity capacity beyond dest->length() to be reserve()d
    * @stable ICU 60
    */
-  StringByteSink(StringClass* dest, int32_t initialAppendCapacity) : dest_(dest) {
+  StringByteSink(StringClass* dest U_LIFETIME_CAPTURE_BY(this), int32_t initialAppendCapacity) : dest_(dest) {
     if (initialAppendCapacity > 0 &&
         static_cast<uint32_t>(initialAppendCapacity) > dest->capacity() - dest->length()) {
       dest->reserve(dest->length() + initialAppendCapacity);

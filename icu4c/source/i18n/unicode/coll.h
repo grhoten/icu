@@ -865,7 +865,7 @@ public:
      * @return a registry key that can be used to unregister this collator
      * @stable ICU 2.6
      */
-    static URegistryKey U_EXPORT2 registerInstance(Collator* toAdopt, const Locale& locale, UErrorCode& status);
+    static URegistryKey U_EXPORT2 registerInstance(Collator* toAdopt U_LIFETIME_CAPTURE_BY(global), const Locale& locale, UErrorCode& status);
 
     /**
      * Register a new CollatorFactory.  The factory will be adopted.

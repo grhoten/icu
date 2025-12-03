@@ -1157,7 +1157,7 @@ class U_I18N_API Scale : public UMemory {
 
 #ifndef U_HIDE_INTERNAL_API
     /** @internal */
-    Scale(int32_t magnitude, impl::DecNum* arbitraryToAdopt);
+    Scale(int32_t magnitude, impl::DecNum* arbitraryToAdopt U_LIFETIME_CAPTURE_BY(this));
 #endif  /* U_HIDE_INTERNAL_API */
 
   private:
@@ -1731,7 +1731,7 @@ class U_I18N_API NumberFormatterSettings {
      * @see MeasureUnit
      * @stable ICU 60
      */
-    Derived adoptUnit(icu::MeasureUnit *unit) const &;
+    Derived adoptUnit(icu::MeasureUnit *unit U_LIFETIME_CAPTURE_BY(this)) const &;
 
     /**
      * Overload of adoptUnit() for use on an rvalue reference.
@@ -1742,7 +1742,7 @@ class U_I18N_API NumberFormatterSettings {
      * @see #adoptUnit
      * @stable ICU 62
      */
-    Derived adoptUnit(icu::MeasureUnit *unit) &&;
+    Derived adoptUnit(icu::MeasureUnit *unit U_LIFETIME_CAPTURE_BY(this)) &&;
 
     /**
      * Sets a unit to be used in the denominator. For example, to format "3 m/s", pass METER to the unit and SECOND to
@@ -1792,7 +1792,7 @@ class U_I18N_API NumberFormatterSettings {
      * @see MeasureUnit
      * @stable ICU 61
      */
-    Derived adoptPerUnit(icu::MeasureUnit *perUnit) const &;
+    Derived adoptPerUnit(icu::MeasureUnit *perUnit U_LIFETIME_CAPTURE_BY(this)) const &;
 
     /**
      * Overload of adoptPerUnit() for use on an rvalue reference.
@@ -1803,7 +1803,7 @@ class U_I18N_API NumberFormatterSettings {
      * @see #adoptPerUnit
      * @stable ICU 62
      */
-    Derived adoptPerUnit(icu::MeasureUnit *perUnit) &&;
+    Derived adoptPerUnit(icu::MeasureUnit *perUnit U_LIFETIME_CAPTURE_BY(this)) &&;
 
     /**
      * Specifies the rounding precision to use when formatting numbers.
@@ -2041,7 +2041,7 @@ class U_I18N_API NumberFormatterSettings {
      * @see NumberingSystem
      * @stable ICU 60
      */
-    Derived adoptSymbols(NumberingSystem *symbols) const &;
+    Derived adoptSymbols(NumberingSystem *symbols U_LIFETIME_CAPTURE_BY(this)) const &;
 
     /**
      * Overload of adoptSymbols() for use on an rvalue reference.
@@ -2052,7 +2052,7 @@ class U_I18N_API NumberFormatterSettings {
      * @see #adoptSymbols
      * @stable ICU 62
      */
-    Derived adoptSymbols(NumberingSystem *symbols) &&;
+    Derived adoptSymbols(NumberingSystem *symbols U_LIFETIME_CAPTURE_BY(this)) &&;
 
     /**
      * Sets the width of the unit (measure unit or currency).  Most common values:

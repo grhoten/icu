@@ -2166,7 +2166,7 @@ public:
    * @stable ICU 2.0
    */
   UnicodeString &setTo(UBool isTerminated,
-                       ConstChar16Ptr text,
+                       ConstChar16Ptr text U_LIFETIME_BOUND,
                        int32_t textLength);
 
   /**
@@ -2188,7 +2188,7 @@ public:
    * @return a reference to this
    * @stable ICU 2.0
    */
-  UnicodeString &setTo(char16_t *buffer,
+  UnicodeString &setTo(char16_t *buffer U_LIFETIME_BOUND,
                        int32_t buffLength,
                        int32_t buffCapacity);
 
@@ -3055,7 +3055,7 @@ public:
    * @see getTerminatedBuffer()
    * @stable ICU 2.0
    */
-  inline const char16_t *getBuffer() const;
+  inline const char16_t *getBuffer() const U_LIFETIME_BOUND;
 
   /**
    * Get a read-only pointer to the internal buffer,
@@ -3090,7 +3090,7 @@ public:
    * @see getBuffer()
    * @stable ICU 2.2
    */
-  const char16_t *getTerminatedBuffer();
+  const char16_t *getTerminatedBuffer() U_LIFETIME_BOUND;
 
   /**
    * Converts to a std::u16string_view.
@@ -3371,7 +3371,7 @@ public:
    * @stable ICU 2.0
    */
   UnicodeString(UBool isTerminated,
-                ConstChar16Ptr text,
+                ConstChar16Ptr text U_LIFETIME_BOUND,
                 int32_t textLength);
 
   /**
@@ -3392,7 +3392,7 @@ public:
    * @param buffCapacity The size of `buffer` in char16_ts.
    * @stable ICU 2.0
    */
-  UnicodeString(char16_t *buffer, int32_t buffLength, int32_t buffCapacity);
+  UnicodeString(char16_t *buffer U_LIFETIME_BOUND, int32_t buffLength, int32_t buffCapacity);
 
 #if !U_CHAR16_IS_TYPEDEF
   /**
@@ -3403,7 +3403,7 @@ public:
    * @param buffCapacity buffer capacity
    * @stable ICU 59
    */
-  UnicodeString(uint16_t *buffer, int32_t buffLength, int32_t buffCapacity) :
+  UnicodeString(uint16_t *buffer U_LIFETIME_BOUND, int32_t buffLength, int32_t buffCapacity) :
       UnicodeString(Char16Ptr(buffer), buffLength, buffCapacity) {}
 #endif
 
@@ -3417,7 +3417,7 @@ public:
    * @param buffCapacity buffer capacity
    * @stable ICU 59
    */
-  UnicodeString(wchar_t *buffer, int32_t buffLength, int32_t buffCapacity) :
+  UnicodeString(wchar_t *buffer U_LIFETIME_BOUND, int32_t buffLength, int32_t buffCapacity) :
       UnicodeString(Char16Ptr(buffer), buffLength, buffCapacity) {}
 #endif
 
@@ -3943,8 +3943,8 @@ private:
 
   // get pointer to start of array
   // these do not check for kOpenGetBuffer, unlike the public getBuffer() function
-  inline char16_t* getArrayStart();
-  inline const char16_t* getArrayStart() const;
+  inline char16_t* getArrayStart() U_LIFETIME_BOUND;
+  inline const char16_t* getArrayStart() const U_LIFETIME_BOUND;
 
   inline UBool hasShortLength() const;
   inline int32_t getShortLength() const;

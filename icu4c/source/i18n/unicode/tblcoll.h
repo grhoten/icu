@@ -835,7 +835,7 @@ private:
         ATTR_LIMIT
     };
 
-    void adoptTailoring(CollationTailoring *t, UErrorCode &errorCode);
+    void adoptTailoring(CollationTailoring *t U_LIFETIME_CAPTURE_BY(this), UErrorCode &errorCode);
 
     // Both lengths must be <0 or else both must be >=0.
     UCollationResult doCompare(const char16_t *left, int32_t leftLength,

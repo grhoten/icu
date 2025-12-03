@@ -946,9 +946,9 @@ ucol_getFunctionalEquivalent(char* result, int32_t resultCapacity,
  * @return The collation tailoring rules.
  * @stable ICU 2.0
  */
-U_CAPI const UChar* U_EXPORT2 
-ucol_getRules(    const    UCollator    *coll, 
-        int32_t            *length);
+U_CAPI const UChar* U_EXPORT2
+ucol_getRules(    const    UCollator    *coll,
+        int32_t            *length) U_LIFETIME_CAPTURE_BY(coll);
 
 #ifndef U_HIDE_DEPRECATED_API
 /** Get the short definition string for a collator. This API harvests the collator's
@@ -1424,7 +1424,7 @@ ucol_getLocale(const UCollator *coll, ULocDataLocaleType type, UErrorCode *statu
  * @stable ICU 2.8
  */
 U_CAPI const char * U_EXPORT2
-ucol_getLocaleByType(const UCollator *coll, ULocDataLocaleType type, UErrorCode *status);
+ucol_getLocaleByType(const UCollator *coll, ULocDataLocaleType type, UErrorCode *status) U_LIFETIME_CAPTURE_BY(coll);
 
 /**
  * Get a Unicode set that contains all the characters and sequences tailored in 

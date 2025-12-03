@@ -1354,7 +1354,7 @@ ucal_getLimit(const UCalendar*     cal,
  *  @stable ICU 2.8
  */
 U_CAPI const char * U_EXPORT2
-ucal_getLocaleByType(const UCalendar *cal, ULocDataLocaleType type, UErrorCode* status);
+ucal_getLocaleByType(const UCalendar *cal, ULocDataLocaleType type, UErrorCode* status) U_LIFETIME_CAPTURE_BY(cal);
 
 /**
  * Returns the timezone data version currently used by ICU.
@@ -1424,7 +1424,7 @@ ucal_getIanaTimeZoneID(const UChar* id, int32_t len,
  * @stable ICU 4.2
  */
 U_CAPI const char * U_EXPORT2
-ucal_getType(const UCalendar *cal, UErrorCode* status);
+ucal_getType(const UCalendar *cal, UErrorCode* status) U_LIFETIME_CAPTURE_BY(cal);
 
 /**
  * Given a key and a locale, returns an array of string values in a preferred

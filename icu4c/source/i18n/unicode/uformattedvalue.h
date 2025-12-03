@@ -385,7 +385,7 @@ U_CAPI const UChar* U_EXPORT2
 ufmtval_getString(
     const UFormattedValue* ufmtval,
     int32_t* pLength,
-    UErrorCode* ec);
+    UErrorCode* ec) U_LIFETIME_CAPTURE_BY(ufmtval);
 
 
 /**

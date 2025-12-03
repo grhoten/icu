@@ -229,7 +229,7 @@ uregion_getPreferredValues(const URegion* uregion, UErrorCode *status);
  * @stable ICU 52
  */
 U_CAPI const char* U_EXPORT2
-uregion_getRegionCode(const URegion* uregion);
+uregion_getRegionCode(const URegion* uregion) U_LIFETIME_CAPTURE_BY(uregion);
 
 /**
  * Returns the specified uregion's numeric code, or a negative value if there is no numeric code

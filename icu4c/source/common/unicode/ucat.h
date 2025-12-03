@@ -152,7 +152,7 @@ u_catclose(u_nl_catd catd);
 U_CAPI const UChar* U_EXPORT2
 u_catgets(u_nl_catd catd, int32_t set_num, int32_t msg_num,
           const UChar* s,
-          int32_t* len, UErrorCode* ec);
+          int32_t* len, UErrorCode* ec) U_LIFETIME_CAPTURE_BY(catd);
 
 U_CDECL_END
 

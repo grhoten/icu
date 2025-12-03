@@ -523,7 +523,7 @@ public:
      * @param formatsToAdopt    the format to be adopted.
      * @param count             the size of the array.
      */
-    U_I18N_API virtual void adoptFormats(Format** formatsToAdopt, int32_t count);
+    U_I18N_API virtual void adoptFormats(Format** formatsToAdopt U_LIFETIME_CAPTURE_BY(this), int32_t count);
 
     /**
      * Sets subformats.
@@ -555,7 +555,7 @@ public:
      * @param formatNumber     index of the subformat.
      * @param formatToAdopt    the format to be adopted.
      */
-    U_I18N_API virtual void adoptFormat(int32_t formatNumber, Format* formatToAdopt);
+    U_I18N_API virtual void adoptFormat(int32_t formatNumber, Format* formatToAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Sets one subformat.

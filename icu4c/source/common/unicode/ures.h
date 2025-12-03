@@ -379,7 +379,7 @@ ures_openFillIn(UResourceBundle *r,
 U_CAPI const UChar* U_EXPORT2
 ures_getString(const UResourceBundle* resourceBundle,
                int32_t* len,
-               UErrorCode* status);
+               UErrorCode* status) U_LIFETIME_CAPTURE_BY(resourceBundle);
 
 /**
  * Returns a UTF-8 string from a string resource.
@@ -430,7 +430,7 @@ ures_getString(const UResourceBundle* resourceBundle,
  */
 U_CAPI const char * U_EXPORT2
 ures_getUTF8String(const UResourceBundle *resB,
-                   char *dest, int32_t *length,
+                   char *dest U_LIFETIME_BOUND, int32_t *length,
                    UBool forceCopy,
                    UErrorCode *status);
 
@@ -454,7 +454,7 @@ ures_getUTF8String(const UResourceBundle *resB,
 U_CAPI const uint8_t* U_EXPORT2
 ures_getBinary(const UResourceBundle* resourceBundle,
                int32_t* len,
-               UErrorCode* status);
+               UErrorCode* status) U_LIFETIME_CAPTURE_BY(resourceBundle);
 
 /**
  * Returns a 32 bit integer array from a resource.
@@ -476,7 +476,7 @@ ures_getBinary(const UResourceBundle* resourceBundle,
 U_CAPI const int32_t* U_EXPORT2
 ures_getIntVector(const UResourceBundle* resourceBundle,
                   int32_t* len,
-                  UErrorCode* status);
+                  UErrorCode* status) U_LIFETIME_CAPTURE_BY(resourceBundle);
 
 /**
  * Returns an unsigned integer from a resource.
@@ -551,7 +551,7 @@ ures_getType(const UResourceBundle *resourceBundle);
  * @stable ICU 2.0
  */
 U_CAPI const char * U_EXPORT2
-ures_getKey(const UResourceBundle *resourceBundle);
+ures_getKey(const UResourceBundle *resourceBundle) U_LIFETIME_CAPTURE_BY(resourceBundle);
 
 /* ITERATION API
     This API provides means for iterating through a resource
@@ -609,7 +609,7 @@ U_CAPI const UChar* U_EXPORT2
 ures_getNextString(UResourceBundle *resourceBundle,
                    int32_t* len,
                    const char ** key,
-                   UErrorCode *status);
+                   UErrorCode *status) U_LIFETIME_CAPTURE_BY(resourceBundle);
 
 /**
  * Returns the resource in a given resource at the specified index. Features a fill-in parameter.
@@ -644,7 +644,7 @@ U_CAPI const UChar* U_EXPORT2
 ures_getStringByIndex(const UResourceBundle *resourceBundle,
                       int32_t indexS,
                       int32_t* len,
-                      UErrorCode *status);
+                      UErrorCode *status) U_LIFETIME_CAPTURE_BY(resourceBundle);
 
 /**
  * Returns a UTF-8 string from a resource at the specified index.
@@ -735,7 +735,7 @@ U_CAPI const UChar* U_EXPORT2
 ures_getStringByKey(const UResourceBundle *resB,
                     const char* key,
                     int32_t* len,
-                    UErrorCode *status);
+                    UErrorCode *status) U_LIFETIME_CAPTURE_BY(resB);
 
 /**
  * Returns a UTF-8 string from a resource and a key.

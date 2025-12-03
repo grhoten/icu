@@ -484,7 +484,7 @@ public:
      * @stable ICU 2.0
      */
     U_I18N_API SimpleDateFormat(const UnicodeString& pattern,
-                                DateFormatSymbols* formatDataToAdopt,
+                                DateFormatSymbols* formatDataToAdopt U_LIFETIME_CAPTURE_BY(this),
                                 UErrorCode& status);
 
     /**
@@ -718,7 +718,7 @@ public:
      * @param newFormatSymbols the given date-time formatting symbols to copy.
      * @stable ICU 2.0
      */
-    U_I18N_API virtual void adoptDateFormatSymbols(DateFormatSymbols* newFormatSymbols);
+    U_I18N_API virtual void adoptDateFormatSymbols(DateFormatSymbols* newFormatSymbols U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Set the date/time formatting data.
@@ -762,7 +762,7 @@ public:
      * @param calendarToAdopt    Calendar object to be adopted.
      * @stable ICU 2.0
      */
-    U_I18N_API virtual void adoptCalendar(Calendar* calendarToAdopt) override;
+    U_I18N_API virtual void adoptCalendar(Calendar* calendarToAdopt U_LIFETIME_CAPTURE_BY(this)) override;
 
     /* Cannot use #ifndef U_HIDE_INTERNAL_API for the following methods since they are virtual */
     /**
@@ -772,7 +772,7 @@ public:
      * @param timeZoneFormatToAdopt The TimeZoneFormat object to be adopted.
      * @internal ICU 49 technology preview
      */
-    U_I18N_API virtual void adoptTimeZoneFormat(TimeZoneFormat* timeZoneFormatToAdopt);
+    U_I18N_API virtual void adoptTimeZoneFormat(TimeZoneFormat* timeZoneFormatToAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Sets the TimeZoneFormat to be used by this date/time formatter.
@@ -807,7 +807,7 @@ public:
      * @param formatToAdopt the NumbeferFormat used
      * @stable ICU 54
      */
-    U_I18N_API void adoptNumberFormat(NumberFormat* formatToAdopt) override;
+    U_I18N_API void adoptNumberFormat(NumberFormat* formatToAdopt U_LIFETIME_CAPTURE_BY(this)) override;
 
     /**
      * Allow the user to set the NumberFormat for several fields
@@ -825,7 +825,7 @@ public:
      * @stable ICU 54
      */
     U_I18N_API void adoptNumberFormat(const UnicodeString& fields,
-                                      NumberFormat* formatToAdopt,
+                                      NumberFormat* formatToAdopt U_LIFETIME_CAPTURE_BY(this),
                                       UErrorCode& status);
 
     /**
@@ -975,7 +975,7 @@ private:
      * @param status Error code
      * @return the newly constructed fCalendar
      */
-    Calendar *initializeCalendar(TimeZone* adoptZone, const Locale& locale, UErrorCode& status);
+    Calendar *initializeCalendar(TimeZone* adoptZone U_LIFETIME_CAPTURE_BY(this), const Locale& locale, UErrorCode& status);
 
     /**
      * Called by several of the constructors to load pattern data and formatting symbols

@@ -75,14 +75,14 @@ class U_COMMON_API StringPiece : public UMemory {
    * @param str a NUL-terminated const char * pointer
    * @stable ICU 4.2
    */
-  StringPiece(const char* str);
+  StringPiece(const char* str U_LIFETIME_BOUND);
 #if defined(__cpp_char8_t) || defined(U_IN_DOXYGEN)
   /**
    * Constructs from a NUL-terminated const char8_t * pointer.
    * @param str a NUL-terminated const char8_t * pointer
    * @stable ICU 67
    */
-  StringPiece(const char8_t* str) : StringPiece(reinterpret_cast<const char*>(str)) {}
+  StringPiece(const char8_t* str U_LIFETIME_BOUND) : StringPiece(reinterpret_cast<const char*>(str)) {}
 #endif
   /**
    * Constructs an empty StringPiece.
@@ -96,14 +96,14 @@ class U_COMMON_API StringPiece : public UMemory {
    * Constructs from a std::string.
    * @stable ICU 4.2
    */
-  StringPiece(const std::string& str)
+  StringPiece(const std::string& str U_LIFETIME_BOUND)
     : ptr_(str.data()), length_(static_cast<int32_t>(str.size())) { }
 #if defined(__cpp_lib_char8_t) || defined(U_IN_DOXYGEN)
   /**
    * Constructs from a std::u8string.
    * @stable ICU 67
    */
-  StringPiece(const std::u8string& str)
+  StringPiece(const std::u8string& str U_LIFETIME_BOUND)
     : ptr_(reinterpret_cast<const char*>(str.data())),
       length_(static_cast<int32_t>(str.size())) { }
 #endif
@@ -138,7 +138,7 @@ class U_COMMON_API StringPiece : public UMemory {
 #endif
                 ) &&
                 std::is_same_v<decltype(T().size()), size_t>>>
-  StringPiece(T str)
+  StringPiece(T str U_LIFETIME_BOUND)
       : ptr_(reinterpret_cast<const char*>(str.data())),
         length_(static_cast<int32_t>(str.size())) {}
 
@@ -148,7 +148,7 @@ class U_COMMON_API StringPiece : public UMemory {
    * @param len the length of the string; must be non-negative
    * @stable ICU 4.2
    */
-  StringPiece(const char* offset, int32_t len) : ptr_(offset), length_(len) { }
+  StringPiece(const char* offset U_LIFETIME_BOUND, int32_t len) : ptr_(offset), length_(len) { }
 #if defined(__cpp_char8_t) || defined(U_IN_DOXYGEN)
   /**
    * Constructs from a const char8_t * pointer and a specified length.
@@ -156,7 +156,7 @@ class U_COMMON_API StringPiece : public UMemory {
    * @param len the length of the string; must be non-negative
    * @stable ICU 67
    */
-  StringPiece(const char8_t* str, int32_t len) :
+  StringPiece(const char8_t* str U_LIFETIME_BOUND, int32_t len) :
       StringPiece(reinterpret_cast<const char*>(str), len) {}
 #endif
 
@@ -197,7 +197,7 @@ class U_COMMON_API StringPiece : public UMemory {
    * @return the string pointer
    * @stable ICU 4.2
    */
-  const char* data() const { return ptr_; }
+  const char* data() const U_LIFETIME_BOUND { return ptr_; }
   /**
    * Returns the string length. Same as length().
    * @return the string length
@@ -229,14 +229,14 @@ class U_COMMON_API StringPiece : public UMemory {
    * @param len the length of the new data
    * @stable ICU 4.8
    */
-  void set(const char* xdata, int32_t len) { ptr_ = xdata; length_ = len; }
+  void set(const char* xdata U_LIFETIME_BOUND, int32_t len) { ptr_ = xdata; length_ = len; }
 
   /**
    * Reset the stringpiece to refer to new data.
-   * @param str a pointer to a NUL-terminated string. 
+   * @param str a pointer to a NUL-terminated string.
    * @stable ICU 4.8
    */
-  void set(const char* str);
+  void set(const char* str U_LIFETIME_BOUND);
 
 #if defined(__cpp_char8_t) || defined(U_IN_DOXYGEN)
   /**
@@ -245,7 +245,7 @@ class U_COMMON_API StringPiece : public UMemory {
    * @param len the length of the new data
    * @stable ICU 67
    */
-  inline void set(const char8_t* xdata, int32_t len) {
+  inline void set(const char8_t* xdata U_LIFETIME_BOUND, int32_t len) {
       set(reinterpret_cast<const char*>(xdata), len);
   }
 
@@ -254,7 +254,7 @@ class U_COMMON_API StringPiece : public UMemory {
    * @param str a pointer to a NUL-terminated string.
    * @stable ICU 67
    */
-  inline void set(const char8_t* str) {
+  inline void set(const char8_t* str U_LIFETIME_BOUND) {
       set(reinterpret_cast<const char*>(str));
   }
 #endif

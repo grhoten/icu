@@ -270,10 +270,10 @@ uregex_clone(const URegularExpression *regexp, UErrorCode *status);
  *                   will remain valid until the regular expression is closed.
  * @stable ICU 3.0
  */
-U_CAPI const UChar * U_EXPORT2 
+U_CAPI const UChar * U_EXPORT2
 uregex_pattern(const URegularExpression *regexp,
                      int32_t            *patLength,
-                     UErrorCode         *status);
+                     UErrorCode         *status) U_LIFETIME_CAPTURE_BY(regexp);
 
 /**
  *  Returns the source text of the pattern for this regular expression.
@@ -286,9 +286,9 @@ uregex_pattern(const URegularExpression *regexp,
  *
  * @stable ICU 4.6
  */
-U_CAPI UText * U_EXPORT2 
+U_CAPI UText * U_EXPORT2
 uregex_patternUText(const URegularExpression *regexp,
-                          UErrorCode         *status);
+                          UErrorCode         *status) U_LIFETIME_CAPTURE_BY(regexp);
 
 /**
   * Get the match mode flags that were specified when compiling this regular expression.
@@ -323,9 +323,9 @@ uregex_flags(const  URegularExpression   *regexp,
   * @param status     Receives errors detected by this function.
   * @stable ICU 3.0
   */
-U_CAPI void U_EXPORT2 
+U_CAPI void U_EXPORT2
 uregex_setText(URegularExpression *regexp,
-               const UChar        *text,
+               const UChar        *text U_LIFETIME_CAPTURE_BY(regexp),
                int32_t             textLength,
                UErrorCode         *status);
 
@@ -346,9 +346,9 @@ uregex_setText(URegularExpression *regexp,
   *
   * @stable ICU 4.6
   */
-U_CAPI void U_EXPORT2 
+U_CAPI void U_EXPORT2
 uregex_setUText(URegularExpression *regexp,
-                UText              *text,
+                UText              *text U_LIFETIME_CAPTURE_BY(regexp),
                 UErrorCode         *status);
 
 /**
@@ -371,10 +371,10 @@ uregex_setUText(URegularExpression *regexp,
   *                    this regular expression.
   * @stable ICU 3.0
   */
-U_CAPI const UChar * U_EXPORT2 
+U_CAPI const UChar * U_EXPORT2
 uregex_getText(URegularExpression *regexp,
                int32_t            *textLength,
-               UErrorCode         *status);
+               UErrorCode         *status) U_LIFETIME_CAPTURE_BY(regexp);
 
 /**
   *  Get the subject text that is currently associated with this 
@@ -392,9 +392,9 @@ uregex_getText(URegularExpression *regexp,
   *
   * @stable ICU 4.6
   */
-U_CAPI UText * U_EXPORT2 
+U_CAPI UText * U_EXPORT2
 uregex_getUText(URegularExpression *regexp,
-                UText              *dest,
+                UText              *dest U_LIFETIME_CAPTURE_BY(regexp),
                 UErrorCode         *status);
 
 /**
@@ -422,9 +422,9 @@ uregex_getUText(URegularExpression *regexp,
   *
   * @stable ICU 4.8
   */
-U_CAPI void U_EXPORT2 
+U_CAPI void U_EXPORT2
 uregex_refreshUText(URegularExpression *regexp,
-                    UText              *text,
+                    UText              *text U_LIFETIME_CAPTURE_BY(regexp),
                     UErrorCode         *status);
 
 /**
@@ -703,10 +703,10 @@ uregex_group(URegularExpression *regexp,
   *
   *   @stable ICU 4.6
   */
-U_CAPI UText * U_EXPORT2 
+U_CAPI UText * U_EXPORT2
 uregex_groupUText(URegularExpression *regexp,
                   int32_t             groupNum,
-                  UText              *dest,
+                  UText              *dest U_LIFETIME_CAPTURE_BY(regexp),
                   int64_t            *groupLength,
                   UErrorCode         *status);
 
@@ -1111,10 +1111,10 @@ uregex_replaceAll(URegularExpression    *regexp,
   *
   *    @stable ICU 4.6
   */
-U_CAPI UText * U_EXPORT2 
+U_CAPI UText * U_EXPORT2
 uregex_replaceAllUText(URegularExpression *regexp,
                        UText              *replacement,
-                       UText              *dest,
+                       UText              *dest U_LIFETIME_CAPTURE_BY(regexp),
                        UErrorCode         *status);
 
 /**
@@ -1170,10 +1170,10 @@ uregex_replaceFirst(URegularExpression  *regexp,
   *
   *    @stable ICU 4.6
   */
-U_CAPI UText * U_EXPORT2 
+U_CAPI UText * U_EXPORT2
 uregex_replaceFirstUText(URegularExpression *regexp,
                          UText              *replacement,
-                         UText              *dest,
+                         UText              *dest U_LIFETIME_CAPTURE_BY(regexp),
                          UErrorCode         *status);
 
 /**
@@ -1306,9 +1306,9 @@ uregex_appendTail(URegularExpression    *regexp,
   *
   *   @stable ICU 4.6
   */
-U_CAPI UText * U_EXPORT2 
+U_CAPI UText * U_EXPORT2
 uregex_appendTailUText(URegularExpression    *regexp,
-                       UText                 *dest,
+                       UText                 *dest U_LIFETIME_CAPTURE_BY(regexp),
                        UErrorCode            *status);
 
  /**

@@ -145,7 +145,7 @@ public:
      * @param strToAdopt the UnicodeString string.
      * @stable ICU 2.0
      */
-    Formattable(UnicodeString* strToAdopt);
+    Formattable(UnicodeString* strToAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Creates a Formattable object with an array of Formattable objects.
@@ -160,7 +160,7 @@ public:
      * @param objectToAdopt the UObject to set this object to
      * @stable ICU 3.0
      */
-    Formattable(UObject* objectToAdopt);
+    Formattable(UObject* objectToAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Copy constructor.
@@ -546,14 +546,14 @@ public:
      * @param stringToAdopt    the new string value to be adopted.
      * @stable ICU 2.0
      */
-    void            adoptString(UnicodeString* stringToAdopt);
+    void            adoptString(UnicodeString* stringToAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Sets and adopts the array value and count of this object and
      * changes the type to kArray.
      * @stable ICU 2.0
      */
-    void            adoptArray(Formattable* array, int32_t count);
+    void            adoptArray(Formattable* array U_LIFETIME_CAPTURE_BY(this), int32_t count);
 
     /**
      * Sets and adopts the UObject value of this object and changes
@@ -562,7 +562,7 @@ public:
      * @param objectToAdopt the UObject value to be adopted
      * @stable ICU 3.0
      */
-    void            adoptObject(UObject* objectToAdopt);
+    void            adoptObject(UObject* objectToAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Sets the numeric value from a decimal number string, and changes
@@ -662,7 +662,7 @@ public:
      *  @param dq the DecimalQuantity to be adopted
      *  @internal
      */
-    void adoptDecimalQuantity(number::impl::DecimalQuantity *dq);
+    void adoptDecimalQuantity(number::impl::DecimalQuantity *dq U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Internal function to return the FixedString pointer.

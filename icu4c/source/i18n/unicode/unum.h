@@ -1477,7 +1477,7 @@ unum_setSymbol(UNumberFormat *fmt,
 U_CAPI const char* U_EXPORT2
 unum_getLocaleByType(const UNumberFormat *fmt,
                      ULocDataLocaleType type,
-                     UErrorCode* status); 
+                     UErrorCode* status) U_LIFETIME_CAPTURE_BY(fmt);
 
 /**
  * Set a particular UDisplayContext value in the formatter, such as

@@ -458,7 +458,7 @@ public:
      * Returns that pattern stored in currency info. Internal API for use by NumberFormat API.
      * @internal
      */
-    U_I18N_API inline const char16_t* getCurrencyPattern() const;
+    U_I18N_API inline const char16_t* getCurrencyPattern() const U_LIFETIME_BOUND;
 
     /**
      * Returns the numbering system with which this DecimalFormatSymbols was initialized.

@@ -127,7 +127,7 @@ unumsys_openAvailableNames(UErrorCode *status);
  * @stable ICU 52
  */
 U_CAPI const char * U_EXPORT2
-unumsys_getName(const UNumberingSystem *unumsys);
+unumsys_getName(const UNumberingSystem *unumsys) U_LIFETIME_CAPTURE_BY(unumsys);
 
 /**
  * Returns whether the given UNumberingSystem object is for an algorithmic (not purely

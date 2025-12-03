@@ -213,7 +213,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-            Builder& adoptFormatter(const data_model::FunctionName& formatterName, FormatterFactory* formatterFactory, UErrorCode& errorCode);
+            Builder& adoptFormatter(const data_model::FunctionName& formatterName, FormatterFactory* formatterFactory U_LIFETIME_CAPTURE_BY(this), UErrorCode& errorCode);
             /**
              * Registers a formatter factory to a given type tag.
              * (See `FormattableObject` for details on type tags.)
@@ -241,7 +241,7 @@ namespace message2 {
              * @internal ICU 75 technology preview
              * @deprecated This API is for technology preview only.
              */
-            Builder& adoptSelector(const data_model::FunctionName& selectorName, SelectorFactory* selectorFactory, UErrorCode& errorCode);
+            Builder& adoptSelector(const data_model::FunctionName& selectorName, SelectorFactory* selectorFactory U_LIFETIME_CAPTURE_BY(this), UErrorCode& errorCode);
             /**
              * Creates an immutable `MFFunctionRegistry` object with the selectors and formatters
              * that were previously registered. The builder cannot be used after this call.

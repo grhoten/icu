@@ -132,7 +132,7 @@ public:
      * @param from The time zone rule used before the transition.
      * @stable ICU 3.8
      */
-    void adoptFrom(TimeZoneRule* from);
+    void adoptFrom(TimeZoneRule* from U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Sets the rule used after the transition.  The caller remains
@@ -148,7 +148,7 @@ public:
      * @param to The time zone rule used after the transition.
      * @stable ICU 3.8
      */
-    void adoptTo(TimeZoneRule* to);
+    void adoptTo(TimeZoneRule* to U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Returns the rule used after the transition.

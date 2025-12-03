@@ -235,7 +235,7 @@ ufmt_getObject(const UFormattable* fmt, UErrorCode *status);
  * @see icu::Formattable::getString(UnicodeString&)const
  */
 U_CAPI const UChar* U_EXPORT2
-ufmt_getUChars(UFormattable* fmt, int32_t *len, UErrorCode *status);
+ufmt_getUChars(UFormattable* fmt, int32_t *len, UErrorCode *status) U_LIFETIME_CAPTURE_BY(fmt);
 
 /**
  * Get the number of array objects contained, if an array type UFMT_ARRAY
@@ -258,7 +258,7 @@ ufmt_getArrayLength(const UFormattable* fmt, UErrorCode *status);
  * @see icu::Formattable::getArray(int32_t&, UErrorCode&) const
  */
 U_CAPI UFormattable * U_EXPORT2
-ufmt_getArrayItemByIndex(UFormattable* fmt, int32_t n, UErrorCode *status);
+ufmt_getArrayItemByIndex(UFormattable* fmt, int32_t n, UErrorCode *status) U_LIFETIME_CAPTURE_BY(fmt);
 
 /**
  * Returns a numeric string representation of the number contained within this
@@ -283,7 +283,7 @@ ufmt_getArrayItemByIndex(UFormattable* fmt, int32_t n, UErrorCode *status);
  * @see icu::Formattable::getDecimalNumber(UErrorCode&)
  */
 U_CAPI const char * U_EXPORT2
-ufmt_getDecNumChars(UFormattable *fmt, int32_t *len, UErrorCode *status);
+ufmt_getDecNumChars(UFormattable *fmt, int32_t *len, UErrorCode *status) U_LIFETIME_CAPTURE_BY(fmt);
 
 #endif
 

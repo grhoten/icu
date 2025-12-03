@@ -114,7 +114,7 @@ ulocbld_setLocale(ULocaleBuilder* builder, const char* locale, int32_t length);
  * @stable ICU 74
  */
 U_CAPI void U_EXPORT2
-ulocbld_adoptULocale(ULocaleBuilder* builder, ULocale* locale);
+ulocbld_adoptULocale(ULocaleBuilder* builder, ULocale* locale U_LIFETIME_CAPTURE_BY(builder));
 
 /**
  * Resets the ULocaleBuilder to match the provided IETF BCP 47 language tag.

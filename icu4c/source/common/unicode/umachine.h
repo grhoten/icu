@@ -120,6 +120,44 @@
 #define U_INTERNAL U_CAPI
 
 /**
+ * \def U_LIFETIME_BOUND
+ * The lifetimebound attribute on a function parameter or implicit object parameter indicates that objects that
+ * are referred to by that parameter may also be referred to by the return value of the annotated function. It can also
+ * be used on a parameter of a constructor by the value of the constructed object.
+ */
+#ifndef __cplusplus
+#   define U_LIFETIME_BOUND
+#elif defined(U_LIFETIME_BOUND)
+// Use the predefined value.
+#elif  UPRV_HAS_CPP_ATTRIBUTE(clang::lifetimebound)
+#   define U_LIFETIME_BOUND [[clang::lifetimebound]]
+#elif UPRV_HAS_CPP_ATTRIBUTE(msvc::lifetimebound)
+#   define U_LIFETIME_BOUND [[msvc::lifetimebound]]
+#elif UPRV_HAS_ATTRIBUTE(lifetimebound)
+#   define U_LIFETIME_BOUND __attribute__((lifetimebound))
+#else
+#   define U_LIFETIME_BOUND
+#endif
+
+/**
+ * \def U_LIFETIME_CAPTURE_BY
+ * Similar to U_LIFETIME_BOUND, this attribute on a function parameter or implicit object parameter indicates that
+ * the capturing entity X may refer to the object referred by that parameter.
+ * @param variable The capturing entity.
+ */
+#ifndef __cplusplus
+#   define U_LIFETIME_CAPTURE_BY(variable)
+#elif defined(U_LIFETIME_CAPTURE_BY)
+// Use the predefined value.
+#elif UPRV_HAS_CPP_ATTRIBUTE(clang::lifetime_capture_by)
+#   define U_LIFETIME_CAPTURE_BY(variable) [[clang::lifetime_capture_by(variable)]]
+#elif UPRV_HAS_ATTRIBUTE(lifetime_capture_by)
+#   define U_LIFETIME_CAPTURE_BY(variable) __attribute__((lifetime_capture_by(variable)))
+#else
+#   define U_LIFETIME_CAPTURE_BY(variable)
+#endif
+
+/**
  * \def U_FORCE_INLINE
  * Forces function inlining on compilers that are known to support it.
  * Place this before specifiers like "static" and "explicit".

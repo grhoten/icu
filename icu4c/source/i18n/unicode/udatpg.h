@@ -407,7 +407,7 @@ udatpg_setAppendItemFormat(UDateTimePatternGenerator *dtpg,
 U_CAPI const UChar * U_EXPORT2
 udatpg_getAppendItemFormat(const UDateTimePatternGenerator *dtpg,
                            UDateTimePatternField field,
-                           int32_t *pLength);
+                           int32_t *pLength) U_LIFETIME_CAPTURE_BY(dtpg);
 
 /**
    * Set the name of field, eg "era" in English for ERA. These are only
@@ -442,7 +442,7 @@ udatpg_setAppendItemName(UDateTimePatternGenerator *dtpg,
 U_CAPI const UChar * U_EXPORT2
 udatpg_getAppendItemName(const UDateTimePatternGenerator *dtpg,
                          UDateTimePatternField field,
-                         int32_t *pLength);
+                         int32_t *pLength) U_LIFETIME_CAPTURE_BY(dtpg);
 
 /**
  * The general interface to get a display name for a particular date/time field,
@@ -523,7 +523,7 @@ udatpg_setDateTimeFormat(const UDateTimePatternGenerator *dtpg,
  */
 U_CAPI const UChar * U_EXPORT2
 udatpg_getDateTimeFormat(const UDateTimePatternGenerator *dtpg,
-                         int32_t *pLength);
+                         int32_t *pLength) U_LIFETIME_CAPTURE_BY(dtpg);
 
 #if !UCONFIG_NO_FORMATTING
 /**
@@ -584,7 +584,7 @@ udatpg_setDateTimeFormatForStyle(UDateTimePatternGenerator *udtpg,
 U_CAPI const UChar* U_EXPORT2
 udatpg_getDateTimeFormatForStyle(const UDateTimePatternGenerator *udtpg,
                         UDateFormatStyle style, int32_t *pLength,
-                        UErrorCode *pErrorCode);
+                        UErrorCode *pErrorCode) U_LIFETIME_CAPTURE_BY(udtpg);
 #endif /* #if !UCONFIG_NO_FORMATTING */
 
 /**
@@ -614,7 +614,7 @@ udatpg_setDecimal(UDateTimePatternGenerator *dtpg,
  */
 U_CAPI const UChar * U_EXPORT2
 udatpg_getDecimal(const UDateTimePatternGenerator *dtpg,
-                  int32_t *pLength);
+                  int32_t *pLength) U_LIFETIME_CAPTURE_BY(dtpg);
 
 /**
  * Adjusts the field types (width and subtype) of a pattern to match what is
@@ -726,7 +726,7 @@ udatpg_openBaseSkeletons(const UDateTimePatternGenerator *dtpg, UErrorCode *pErr
 U_CAPI const UChar * U_EXPORT2
 udatpg_getPatternForSkeleton(const UDateTimePatternGenerator *dtpg,
                              const UChar *skeleton, int32_t skeletonLength,
-                             int32_t *pLength);
+                             int32_t *pLength) U_LIFETIME_CAPTURE_BY(dtpg);
 
 #if !UCONFIG_NO_FORMATTING
 

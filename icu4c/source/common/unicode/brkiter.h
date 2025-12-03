@@ -551,7 +551,7 @@ public:
      * @return a registry key that can be used to unregister this instance
      * @stable ICU 2.4
      */
-    U_COMMON_API static URegistryKey U_EXPORT2 registerInstance(BreakIterator* toAdopt,
+    U_COMMON_API static URegistryKey U_EXPORT2 registerInstance(BreakIterator* toAdopt U_LIFETIME_CAPTURE_BY(global),
                                                                 const Locale& locale,
                                                                 UBreakIteratorType kind,
                                                                 UErrorCode& status);

@@ -63,7 +63,7 @@ public:
      * @stable ICU 55
      */
     static ScientificNumberFormatter *createSuperscriptInstance(
-            DecimalFormat *fmtToAdopt, UErrorCode &status);
+            DecimalFormat *fmtToAdopt U_LIFETIME_BOUND, UErrorCode &status);
 
     /**
      * Creates a ScientificNumberFormatter instance that uses
@@ -91,7 +91,7 @@ public:
      * @stable ICU 55
      */
     static ScientificNumberFormatter *createMarkupInstance(
-            DecimalFormat *fmtToAdopt,
+            DecimalFormat *fmtToAdopt U_LIFETIME_BOUND,
             const UnicodeString &beginMarkup,
             const UnicodeString &endMarkup,
             UErrorCode &status);
@@ -191,8 +191,8 @@ public:
     };
 
     ScientificNumberFormatter(
-            DecimalFormat *fmtToAdopt,
-            Style *styleToAdopt,
+            DecimalFormat *fmtToAdopt U_LIFETIME_CAPTURE_BY(this),
+            Style *styleToAdopt U_LIFETIME_CAPTURE_BY(this),
             UErrorCode &status);
 
     ScientificNumberFormatter(const ScientificNumberFormatter &other);
@@ -202,8 +202,8 @@ public:
             const DecimalFormatSymbols &dfs, UnicodeString &preExponent);
 
     static ScientificNumberFormatter *createInstance(
-            DecimalFormat *fmtToAdopt,
-            Style *styleToAdopt,
+            DecimalFormat *fmtToAdopt U_LIFETIME_BOUND,
+            Style *styleToAdopt U_LIFETIME_BOUND,
             UErrorCode &status);
 
     UnicodeString fPreExponent;

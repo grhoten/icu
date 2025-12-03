@@ -1011,7 +1011,7 @@ uset_getStringCount(const USet *set);
  * @see uset_getStringCount
  */
 U_CAPI const UChar* U_EXPORT2
-uset_getString(const USet *set, int32_t index, int32_t *pLength);
+uset_getString(const USet *set, int32_t index, int32_t *pLength) U_LIFETIME_CAPTURE_BY(set);
 
 /**
  * Returns the number of items in this set.  An item is either a range

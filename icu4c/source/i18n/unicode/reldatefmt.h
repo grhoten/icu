@@ -419,7 +419,7 @@ public:
      * @stable ICU 53
      */
     U_I18N_API RelativeDateTimeFormatter(
-        const Locale& locale, NumberFormat *nfToAdopt, UErrorCode& status);
+        const Locale& locale, NumberFormat *nfToAdopt U_LIFETIME_CAPTURE_BY(this), UErrorCode& status);
 
     /**
      * Create RelativeDateTimeFormatter with given locale, NumberFormat,
@@ -438,7 +438,7 @@ public:
      */
     U_I18N_API RelativeDateTimeFormatter(
             const Locale& locale,
-            NumberFormat *nfToAdopt,
+            NumberFormat *nfToAdopt U_LIFETIME_CAPTURE_BY(this),
             UDateRelativeDateTimeFormatterStyle style,
             UDisplayContext capitalizationContext,
             UErrorCode& status);
@@ -703,7 +703,7 @@ private:
 #endif // !UCONFIG_NO_BREAK_ITERATION
     Locale fLocale;
     void init(
-            NumberFormat *nfToAdopt,
+            NumberFormat *nfToAdopt U_LIFETIME_CAPTURE_BY(this),
 #if !UCONFIG_NO_BREAK_ITERATION
             BreakIterator *brkIter,
 #else

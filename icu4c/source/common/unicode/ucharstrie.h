@@ -66,7 +66,7 @@ public:
      * @param trieUChars The char16_t array that contains the serialized trie.
      * @stable ICU 4.8
      */
-    UCharsTrie(ConstChar16Ptr trieUChars)
+    UCharsTrie(ConstChar16Ptr trieUChars U_LIFETIME_CAPTURE_BY(this))
             : ownedArray_(nullptr), uchars_(trieUChars),
               pos_(uchars_), remainingMatchLength_(-1) {}
 
@@ -82,7 +82,7 @@ public:
      * @param other Another UCharsTrie object.
      * @stable ICU 4.8
      */
-    UCharsTrie(const UCharsTrie &other)
+    UCharsTrie(const UCharsTrie &other U_LIFETIME_CAPTURE_BY(this))
             : ownedArray_(nullptr), uchars_(other.uchars_),
               pos_(other.pos_), remainingMatchLength_(other.remainingMatchLength_) {}
 
@@ -157,7 +157,7 @@ public:
      * @see resetToState
      * @stable ICU 4.8
      */
-    const UCharsTrie &saveState(State &state) const {
+    const UCharsTrie &saveState(State &state) const U_LIFETIME_BOUND {
         state.uchars=uchars_;
         state.pos=pos_;
         state.remainingMatchLength=remainingMatchLength_;
@@ -304,7 +304,7 @@ public:
          *                  function chaining. (See User Guide for details.)
          * @stable ICU 4.8
          */
-        Iterator(ConstChar16Ptr trieUChars, int32_t maxStringLength, UErrorCode &errorCode);
+        Iterator(ConstChar16Ptr trieUChars U_LIFETIME_CAPTURE_BY(this), int32_t maxStringLength, UErrorCode &errorCode);
 
         /**
          * Iterates from the current state of the specified UCharsTrie.
@@ -358,7 +358,7 @@ public:
          * @return The string for the last successful next().
          * @stable ICU 4.8
          */
-        const UnicodeString &getString() const { return str_; }
+        const UnicodeString &getString() const U_LIFETIME_BOUND { return str_; }
         /**
          * @return The value for the last successful next().
          * @stable ICU 4.8

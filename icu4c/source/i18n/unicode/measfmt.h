@@ -321,7 +321,7 @@ class U_I18N_API MeasureFormat : public Format {
      * Let subclass change NumberFormat.
      * @internal.
      */
-    void adoptNumberFormat(NumberFormat *nfToAdopt, UErrorCode &status);
+    void adoptNumberFormat(NumberFormat *nfToAdopt U_LIFETIME_CAPTURE_BY(this), UErrorCode &status);
 
     /**
      * ICU use only.

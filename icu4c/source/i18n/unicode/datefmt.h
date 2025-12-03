@@ -636,7 +636,7 @@ public:
      * @return         A date/time formatter which the caller owns.
      * @stable ICU 55
      */
-    U_I18N_API static DateFormat* U_EXPORT2 createInstanceForSkeleton(Calendar* calendarToAdopt,
+    U_I18N_API static DateFormat* U_EXPORT2 createInstanceForSkeleton(Calendar* calendarToAdopt U_LIFETIME_BOUND,
                                                                       const UnicodeString& skeleton,
                                                                       const Locale& locale,
                                                                       UErrorCode& status);
@@ -717,7 +717,7 @@ public:
      * @param calendarToAdopt    Calendar object to be adopted.
      * @stable ICU 2.0
      */
-    U_I18N_API virtual void adoptCalendar(Calendar* calendarToAdopt);
+    U_I18N_API virtual void adoptCalendar(Calendar* calendarToAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Set the calendar to be used by this date format. Initially, the default
@@ -742,7 +742,7 @@ public:
      * @param formatToAdopt     NumberFormat object to be adopted.
      * @stable ICU 2.0
      */
-    U_I18N_API virtual void adoptNumberFormat(NumberFormat* formatToAdopt);
+    U_I18N_API virtual void adoptNumberFormat(NumberFormat* formatToAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Allows you to set the number formatter.
@@ -764,7 +764,7 @@ public:
      * @param zoneToAdopt the TimeZone to be adopted.
      * @stable ICU 2.0
      */
-    U_I18N_API virtual void adoptTimeZone(TimeZone* zoneToAdopt);
+    U_I18N_API virtual void adoptTimeZone(TimeZone* zoneToAdopt U_LIFETIME_CAPTURE_BY(this));
 
     /**
      * Sets the time zone for the calendar of this DateFormat object.

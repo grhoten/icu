@@ -53,14 +53,14 @@ public:
      * @param p pointer
      * @stable ICU 59
      */
-    inline Char16Ptr(char16_t *p);
+    inline Char16Ptr(char16_t *p U_LIFETIME_BOUND);
 #if !U_CHAR16_IS_TYPEDEF
     /**
      * Converts the pointer to char16_t *.
      * @param p pointer to be converted
      * @stable ICU 59
      */
-    inline Char16Ptr(uint16_t *p);
+    inline Char16Ptr(uint16_t *p U_LIFETIME_BOUND);
 #endif
 #if U_SIZEOF_WCHAR_T==2 || defined(U_IN_DOXYGEN)
     /**
@@ -69,7 +69,7 @@ public:
      * @param p pointer to be converted
      * @stable ICU 59
      */
-    inline Char16Ptr(wchar_t *p);
+    inline Char16Ptr(wchar_t *p U_LIFETIME_BOUND);
 #endif
     /**
      * nullptr constructor.
@@ -88,7 +88,7 @@ public:
      * @return the wrapped pointer
      * @stable ICU 59
      */
-    inline char16_t *get() const;
+    inline char16_t *get() const U_LIFETIME_BOUND;
     /**
      * char16_t pointer access via type conversion (e.g., static_cast).
      * @return the wrapped pointer
@@ -160,14 +160,14 @@ public:
      * @param p pointer
      * @stable ICU 59
      */
-    inline ConstChar16Ptr(const char16_t *p);
+    inline ConstChar16Ptr(const char16_t *p U_LIFETIME_BOUND);
 #if !U_CHAR16_IS_TYPEDEF
     /**
      * Converts the pointer to char16_t *.
      * @param p pointer to be converted
      * @stable ICU 59
      */
-    inline ConstChar16Ptr(const uint16_t *p);
+    inline ConstChar16Ptr(const uint16_t *p U_LIFETIME_BOUND);
 #endif
 #if U_SIZEOF_WCHAR_T==2 || defined(U_IN_DOXYGEN)
     /**
@@ -176,7 +176,7 @@ public:
      * @param p pointer to be converted
      * @stable ICU 59
      */
-    inline ConstChar16Ptr(const wchar_t *p);
+    inline ConstChar16Ptr(const wchar_t *p U_LIFETIME_BOUND);
 #endif
     /**
      * nullptr constructor.
@@ -196,7 +196,7 @@ public:
      * @return the wrapped pointer
      * @stable ICU 59
      */
-    inline const char16_t *get() const;
+    inline const char16_t *get() const U_LIFETIME_BOUND;
     /**
      * char16_t pointer access via type conversion (e.g., static_cast).
      * @return the wrapped pointer

@@ -464,8 +464,8 @@ umsg_setLocale(UMessageFormat *fmt,
  * @return the locale.
  * @stable ICU 2.0
  */
-U_CAPI const char*  U_EXPORT2 
-umsg_getLocale(const UMessageFormat *fmt);
+U_CAPI const char*  U_EXPORT2
+umsg_getLocale(const UMessageFormat *fmt) U_LIFETIME_CAPTURE_BY(fmt);
 
 /**
  * Sets the pattern.

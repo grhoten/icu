@@ -901,7 +901,7 @@ uspoof_setAllowedLocales(USpoofChecker *sc, const char *localesList, UErrorCode 
  * @stable ICU 4.2
  */
 U_CAPI const char * U_EXPORT2
-uspoof_getAllowedLocales(USpoofChecker *sc, UErrorCode *status);
+uspoof_getAllowedLocales(USpoofChecker *sc, UErrorCode *status) U_LIFETIME_CAPTURE_BY(sc);
 
 
 /**
@@ -947,7 +947,7 @@ uspoof_setAllowedChars(USpoofChecker *sc, const USet *chars, UErrorCode *status)
  * @stable ICU 4.2
  */
 U_CAPI const USet * U_EXPORT2
-uspoof_getAllowedChars(const USpoofChecker *sc, UErrorCode *status);
+uspoof_getAllowedChars(const USpoofChecker *sc, UErrorCode *status) U_LIFETIME_CAPTURE_BY(sc);
 
 
 /**
@@ -1172,7 +1172,7 @@ uspoof_getCheckResultRestrictionLevel(const USpoofCheckResult *checkResult, UErr
  * @stable ICU 58
  */
 U_CAPI const USet* U_EXPORT2
-uspoof_getCheckResultNumerics(const USpoofCheckResult *checkResult, UErrorCode *status);
+uspoof_getCheckResultNumerics(const USpoofCheckResult *checkResult, UErrorCode *status) U_LIFETIME_CAPTURE_BY(checkResult);
 
 
 /**

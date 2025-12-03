@@ -438,7 +438,7 @@ public:
     *
     * @stable ICU 4.6
     */
-    UText *patternText(UErrorCode      &status) const;
+    UText *patternText(UErrorCode      &status) const U_LIFETIME_BOUND;
 
 
     /**
@@ -1099,7 +1099,7 @@ public:
     *   @return this RegexMatcher.
     *   @stable ICU 2.4
     */
-    RegexMatcher &reset(const UnicodeString &input);
+    RegexMatcher &reset(const UnicodeString &input U_LIFETIME_CAPTURE_BY(this));
 
 
    /**
@@ -1115,7 +1115,7 @@ public:
     *
     *   @stable ICU 4.6
     */
-    RegexMatcher &reset(UText *input);
+    RegexMatcher &reset(UText *input U_LIFETIME_CAPTURE_BY(this));
 
 
   /**
@@ -1142,7 +1142,7 @@ public:
     *
     * @stable ICU 4.8 
     */
-    RegexMatcher &refreshInputText(UText *input, UErrorCode &status);
+    RegexMatcher &refreshInputText(UText *input U_LIFETIME_CAPTURE_BY(this), UErrorCode &status);
 
 private:
     /**
@@ -1167,7 +1167,7 @@ public:
     *   @return the input string
     *   @stable ICU 2.4
     */
-    const UnicodeString &input() const;
+    const UnicodeString &input() const U_LIFETIME_BOUND;
     
    /**
     *   Returns the input string being matched.  This is the live input text; it should not be
@@ -1177,7 +1177,7 @@ public:
     *
     *   @stable ICU 4.6
     */
-    UText *inputText() const;
+    UText *inputText() const U_LIFETIME_BOUND;
     
    /**
     *   Returns the input string being matched, either by copying it into the provided
@@ -1189,7 +1189,7 @@ public:
     *
     *   @stable ICU 4.6
     */
-    UText *getInput(UText *dest, UErrorCode &status) const;
+    UText *getInput(UText *dest U_LIFETIME_BOUND, UErrorCode &status) const;
     
 
    /** Sets the limits of this matcher's region.
@@ -1353,7 +1353,7 @@ public:
     *    @return  the RegexPattern for this RegexMatcher
     *    @stable ICU 2.4
     */
-    const RegexPattern &pattern() const;
+    const RegexPattern &pattern() const U_LIFETIME_BOUND;
 
 
    /**
@@ -1520,7 +1520,7 @@ public:
     *  @return  the destination string.
     *  @stable ICU 2.4
     */
-    UnicodeString &appendTail(UnicodeString &dest);
+    UnicodeString &appendTail(UnicodeString &dest U_LIFETIME_BOUND);
 
 
    /**
@@ -1536,7 +1536,7 @@ public:
     *
     *  @stable ICU 4.6
     */
-    UText *appendTail(UText *dest, UErrorCode &status);
+    UText *appendTail(UText *dest U_LIFETIME_BOUND, UErrorCode &status);
 
 
     /**

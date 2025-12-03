@@ -869,7 +869,7 @@ ucnv_getDisplayName(const UConverter *converter,
  * @stable ICU 2.0
  */
 U_CAPI const char * U_EXPORT2
-ucnv_getName(const UConverter *converter, UErrorCode *err);
+ucnv_getName(const UConverter *converter, UErrorCode *err) U_LIFETIME_CAPTURE_BY(converter);
 
 /**
  * Gets a codepage number associated with the converter. This is not guaranteed
