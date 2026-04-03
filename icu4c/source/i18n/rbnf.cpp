@@ -1264,21 +1264,19 @@ RuleBasedNumberFormat::parse(const UnicodeString& text,
     }
 }
 
-#if !UCONFIG_NO_COLLATION
-
 void
 RuleBasedNumberFormat::setLenient(UBool enabled)
 {
     lenient = enabled;
+#if !UCONFIG_NO_COLLATION
     if (!enabled && collator) {
         delete collator;
         collator = nullptr;
     }
+#endif
 }
 
-#endif
-
-void 
+void
 RuleBasedNumberFormat::setDefaultRuleSet(const UnicodeString& ruleSetName, UErrorCode& status) {
     if (U_SUCCESS(status)) {
         if (ruleSetName.isEmpty()) {

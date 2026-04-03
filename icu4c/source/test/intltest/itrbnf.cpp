@@ -258,7 +258,6 @@ IntlTestRBNF::TestAPI() {
     }
   }
 
-#if !UCONFIG_NO_COLLATION
   // test ruleset names
   {
     logln("Testing getNumberOfRuleSetNames, getRuleSetName and format using rule set names");
@@ -319,7 +318,6 @@ IntlTestRBNF::TestAPI() {
     }   
     status = U_ZERO_ERROR;
   }
-#endif
 
   // test API
   UnicodeString expected("four point five","");
@@ -1183,7 +1181,6 @@ IntlTestRBNF::TestEnglishSpellout()
 
         doTest(formatter, testData, true);
 
-#if !UCONFIG_NO_COLLATION
         formatter->setLenient(true);
         static const char* lpTestData[][2] = {
             { "fifty-7", "57" },
@@ -1195,7 +1192,6 @@ IntlTestRBNF::TestEnglishSpellout()
             { nullptr, nullptr}
         };
         doLenientParseTest(formatter, lpTestData);
-#endif
     }
     delete formatter;
 }
@@ -1270,14 +1266,12 @@ IntlTestRBNF::TestDurations()
         };
         doTest(formatter, fractionalTestData, false);
         
-#if !UCONFIG_NO_COLLATION
         formatter->setLenient(true);
         static const char* lpTestData[][2] = {
             { "2-51-33", "10,293" },
             { nullptr, nullptr}
         };
         doLenientParseTest(formatter, lpTestData);
-#endif
     }
     delete formatter;
 }
@@ -1439,7 +1433,6 @@ IntlTestRBNF::TestFrenchSpellout()
         
         doTest(formatter, testData, true);
         
-#if !UCONFIG_NO_COLLATION
         formatter->setLenient(true);
         static const char* lpTestData[][2] = {
             { "trente-et-un", "31" },
@@ -1447,7 +1440,6 @@ IntlTestRBNF::TestFrenchSpellout()
             { nullptr, nullptr}
         };
         doLenientParseTest(formatter, lpTestData);
-#endif
     }
     delete formatter;
 }
@@ -2053,7 +2045,6 @@ IntlTestRBNF::TestAllLocales()
                 break;
             }
 
-#if !UCONFIG_NO_COLLATION
             for (unsigned int numidx = 0; numidx < UPRV_LENGTHOF(numbers); numidx++) {
                 double n = numbers[numidx];
                 UnicodeString str;
@@ -2113,7 +2104,6 @@ IntlTestRBNF::TestAllLocales()
                     }
                 }
             }
-#endif
             delete f;
         }
     }
