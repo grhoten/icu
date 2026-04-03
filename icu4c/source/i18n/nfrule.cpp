@@ -1426,6 +1426,10 @@ NFRule::prefixLength(const UnicodeString& str, const UnicodeString& prefix, UErr
 
         // go through all this grief if we're in lenient-parse mode
 #if !UCONFIG_NO_COLLATION
+		if (formatter->lenientParseRules == nullptr) {
+			// Nothing customized. Don't go further.
+			return 0;
+		}
         // get the formatter's collator and use it to create two
         // collation element iterators, one over the target string
         // and another over the prefix (right now, we'll throw an
