@@ -1356,6 +1356,11 @@ public class RuleBasedNumberFormat extends NumberFormat implements Cloneable {
      */
     public void setLenientParseMode(boolean enabled) {
         lenientParse = enabled;
+        if (enabled) {
+            // Eagerly initialize the scanner provider so that getLenientScannerProvider()
+            // is thread-safe when called from parse().
+            initializeLenientScannerProvider();
+        }
     }
 
     /**
@@ -1392,10 +1397,20 @@ public class RuleBasedNumberFormat extends NumberFormat implements Cloneable {
      * @stable ICU 4.4
      */
     public RbnfLenientScannerProvider getLenientScannerProvider() {
-        // there's a potential race condition if two threads try to set/get the scanner at
-        // the same time, but you get what you get, and you shouldn't be using this from
-        // multiple threads anyway.
         if (scannerProvider == null && lenientParse && !lookedForScanner) {
+            initializeLenientScannerProvider();
+        }
+
+        return scannerProvider;
+    }
+
+    /**
+     * Attempts to instantiate the default lenient scanner provider. Called eagerly from
+     * setLenientParseMode() so that getLenientScannerProvider() does not need to perform lazy
+     * initialization from parse() (thread safety).
+     */
+    private void initializeLenientScannerProvider() {
+        if (scannerProvider == null && !lookedForScanner) {
             try {
                 lookedForScanner = true;
                 Class<?> cls = Class.forName("com.ibm.icu.impl.text.RbnfScannerProviderImpl");
@@ -1406,8 +1421,6 @@ public class RuleBasedNumberFormat extends NumberFormat implements Cloneable {
                 // any failure, we just ignore and return null
             }
         }
-
-        return scannerProvider;
     }
 
     /**
@@ -2052,10 +2065,12 @@ public class RuleBasedNumberFormat extends NumberFormat implements Cloneable {
                     // should only happen when deserializing, etc.
                     capitalizationBrkIter = BreakIterator.getSentenceInstance(locale);
                 }
+                // Clone the break iterator to avoid mutating it (thread safety).
+                BreakIterator iter = (BreakIterator) capitalizationBrkIter.clone();
                 return UCharacter.toTitleCase(
                         locale,
                         result,
-                        capitalizationBrkIter,
+                        iter,
                         UCharacter.TITLECASE_NO_LOWERCASE
                                 | UCharacter.TITLECASE_NO_BREAK_ADJUSTMENT);
             }
